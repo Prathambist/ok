@@ -101,7 +101,8 @@ function Home() {
         { name: 'Bell Pepper', imageKey: 'bellpepper', type: 'vegetable', price: 85 },
         { name: 'Spinach', imageKey: 'spinach', type: 'vegetable', price: 45 },
         { name: 'Potato', imageKey: 'potato', type: 'vegetable', price: 40 },
-        { name: 'Onion', imageKey: 'onion', type: 'vegetable', price: 55 }
+        { name: 'Onion', imageKey: 'onion', type: 'vegetable', price: 55 },
+        { name: 'Onion1', imageKey: 'onion1', type: 'vegetable1', price: 550 },
       ];
       setProduce(data);
       setLoading(false);
