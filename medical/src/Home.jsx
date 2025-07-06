@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import slide1 from './assets/slide1.jpg';
+import slide2 from './assets/slide2.jpg';
+import slide3 from './assets/slide3.jpg';
 
 function ProduceGrid({ items, type, limit, showViewMore }) {
   const displayedItems = limit ? items.slice(0, limit) : items;
@@ -59,22 +62,23 @@ function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    {
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-      title: "Mountain Landscape",
-      description: "Beautiful mountain scenery"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
-      title: "Nature View",
-      description: "Stunning natural landscape"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308",
-      title: "Scenic Beauty",
-      description: "Breathtaking outdoor view"
-    }
-  ];
+  {
+    image: slide1,
+    title: "Fresh Fruits",
+    description: "Organic and locally sourced"
+  },
+  {
+    image: slide2,
+    title: "Healthy Vegetables",
+    description: "Direct from the farm to you"
+  },
+  {
+    image: slide3,
+    title: "Natural Goodness",
+    description: "Pure and delicious produce"
+  }
+];
+
 
   useEffect(() => {
     const interval = setInterval(() => {
