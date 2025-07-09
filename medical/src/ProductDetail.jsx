@@ -18,6 +18,19 @@ const productData = [
   { name: 'Spinach', imageKey: 'spinach', type: 'vegetable', price: 45 },
   { name: 'Potato', imageKey: 'potato', type: 'vegetable', price: 40 },
   { name: 'Onion', imageKey: 'onion', type: 'vegetable', price: 55 },
+  { name: 'Almonds', imageKey: 'almonds', type: 'dryfruit', price: 300 },
+        { name: 'Cashews', imageKey: 'cashews', type: 'dryfruit', price: 350 },
+        { name: 'Raisins', imageKey: 'raisins', type: 'dryfruit', price: 200 },
+        { name: 'Walnuts', imageKey: 'walnuts', type: 'dryfruit', price: 400 },
+        { name: 'Pistachios', imageKey: 'pistachios', type: 'dryfruit', price: 380 },
+        { name: 'Dates', imageKey: 'dates', type: 'dryfruit', price: 220 },
+        { name: 'Figs', imageKey: 'figs', type: 'dryfruit', price: 260 },
+        { name: 'Milk', imageKey: 'milk', type: 'dairy', price: 90 },
+        { name: 'Cheese', imageKey: 'cheese', type: 'dairy', price: 250 },
+        { name: 'Yogurt', imageKey: 'yogurt', type: 'dairy', price: 110 },
+        { name: 'Butter', imageKey: 'butter', type: 'dairy', price: 180 },
+        { name: 'Paneer', imageKey: 'paneer', type: 'dairy', price: 220 }
+
 ];
 
 function ProductDetail() {
