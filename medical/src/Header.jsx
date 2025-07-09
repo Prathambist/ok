@@ -38,10 +38,10 @@ function Header({ searchTerm, onSearchChange, onSearch }) {
               <NavDropdown.Item href="/vegetables">
                 Vegetable
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Dry Fruits</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item href="/dryfruits">Dry Fruits</NavDropdown.Item>
+              
+              <NavDropdown.Item href="/dairys">
+                Dairy
               </NavDropdown.Item>
             </NavDropdown>
               <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">

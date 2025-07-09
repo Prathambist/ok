@@ -25,7 +25,7 @@ function MyRouter() {
               <Route path="/fruits" element={<Fruits />} />
               <Route path="/vegetables" element={<Vegetables />} />
               <Route path="/dryfruits" element={<Dryfruits />} />
-              <Route path="/dairy" element={<Dairy />} />
+              <Route path="/dairys" element={<Dairy />} />
 
               <Route path="/offers" element={<Offers />} />
               <Route path="/product/:name" element={<ProductDetail />} />
