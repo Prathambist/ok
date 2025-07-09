@@ -10,6 +10,7 @@ import Vegetables from './Vegetables';
 import ProductDetail from './ProductDetail';
 import Search from './Search';
 import Dryfruits from './Dryfruits';
+import Offers from './Offers';
 function MyRouter() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function MyRouter() {
               <Route path="/fruits" element={<Fruits />} />
               <Route path="/vegetables" element={<Vegetables />} />
               <Route path="/dryfruits" element={<Dryfruits />} />
+              <Route path="/offers" element={<Offers />} />
               <Route path="/product/:name" element={<ProductDetail />} />
               <Route path="signup" element={<Sign />} />
           
