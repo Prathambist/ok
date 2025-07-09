@@ -6,9 +6,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
   return (
     <div>
       <h3 className="text-white text-2xl font-semibold mb-4 flex items-center">
-        
         {type === 'fruit' ? '🍓 Fruits' : type === 'vegetable' ? '🥕 Vegetables' : '🌰 Dry Fruits'}
-
         <span className="ml-2 text-sm bg-green-500 px-2 py-1 rounded-full">
           {items.length} items
         </span>
@@ -20,7 +18,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
             className="relative bg-white rounded-lg shadow-lg overflow-hidden border-4 border-purple-500 transform hover:scale-105 transition-all duration-300"
           >
             <div className="absolute top-2 left-2 bg-yellow-300 text-yellow-900 px-2 py-1 rounded text-xs font-semibold z-10 shadow">
-              {item.type === 'fruit' ? 'Fruit' : 'Vegetable'}
+              {item.type === 'fruit' ? 'Fruit' : item.type === 'vegetable' ? 'Vegetable' : 'Dry Fruit'}
             </div>
             <Link to={`/product/${encodeURIComponent(item.name)}`}>
               <div className="h-52 w-full overflow-hidden bg-pink-100 cursor-pointer">
@@ -196,23 +194,23 @@ function Home() {
 
         {/* Your original sections */}
         <div className="bg-yellow-500 w-full h-screen flex items-center justify-center">
-  {/* Left section — hidden on small screens */}
-      <div className="hidden md:flex h-screen bg-blue-600 flex-1 items-center justify-center">
-      <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
+          {/* Left section — hidden on small screens */}
+          <div className="hidden md:flex h-screen bg-blue-600 flex-1 items-center justify-center">
+            <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
+          </div>
+
+          {/* Center section — always visible */}
+          <div className="h-screen bg-red-400 flex flex-2 items-center justify-center">
+            <div className="h-[95%] w-[90%] bg-fuchsia-300 border rounded"></div>
+          </div>
+
+          {/* Right section — hidden on small screens */}
+          <div className="hidden md:flex h-screen bg-yellow-400 flex-1 items-center justify-center">
+            <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
+          </div>
+        </div>
+      </div>
     </div>
-
-  {/* Center section — always visible */}
-  <div className="h-screen bg-red-400 flex flex-2 items-center justify-center">
-    <div className="h-[95%] w-[90%] bg-fuchsia-300 border rounded"></div>
-  </div>
-
-  {/* Right section — hidden on small screens */}
-  <div className="hidden md:flex h-screen bg-yellow-400 flex-1 items-center justify-center">
-    <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
-  </div>
-</div>
-  </div>
-  </div>
   );
 }
 
