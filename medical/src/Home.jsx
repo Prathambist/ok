@@ -5,7 +5,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
   const displayedItems = limit ? items.slice(0, limit) : items;
   return (
     <div>
-      <h3 className="text-white text-2xl font-semibold mb-4 flex items-center">
+      <h3 className="text-black text-2xl font-semibold mb-4 flex items-center">
         {type === 'fruit'
     ? '🍓 Fruits'
     : type === 'vegetable'
@@ -23,7 +23,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
         {displayedItems.map((item, index) => (
           <div
             key={index}
-            className="relative bg-white rounded-lg shadow-lg overflow-hidden border-4 border-purple-500 transform hover:scale-105 transition-all duration-300"
+            className="relative bg-white rounded-lg shadow-lg overflow-hidden border-4 border-gray-500 transform hover:scale-105 transition-all duration-300"
           >
             <div className="absolute top-2 left-2 bg-yellow-300 text-yellow-900 px-2 py-1 rounded text-xs font-semibold z-10 shadow">
               {item.type === 'fruit'
@@ -60,7 +60,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
         <div className="text-center mt-4">
           <Link
             to={`/${type}s`}
-            className="text-white underline hover:text-green-300 transition"
+            className="text-black underline hover:text-green-300 transition"
           >
             View More
           </Link>
@@ -200,12 +200,12 @@ function Home() {
         </div>
 
         {/* Fruits & Vegetables Display Section */}
-        <div className="bg-blue-500 w-full min-h-screen flex items-center justify-center py-8">
-          <div className="w-[98%] bg-purple-700 rounded p-6 overflow-auto">
-            <h2 className="text-white text-3xl font-bold text-center mb-6"> Currently Trending </h2>
+        <div className="bg-gray-200 w-full min-h-screen flex items-center justify-center py-8">
+          <div className="w-[98%] bg-gray-300 rounded p-6 overflow-auto">
+            <h2 className="text-black text-3xl font-bold text-center mb-6"> Currently Trending </h2>
             {loading ? (
               <div className="flex justify-center items-center h-64">
-                <div className="text-white text-xl">Loading products...</div>
+                <div className="text-black text-xl">Loading products...</div>
               </div>
             ) : (
               <div className="space-y-8">
@@ -220,19 +220,19 @@ function Home() {
         </div>
 
         {/* Your original sections */}
-        <div className="bg-yellow-500 w-full h-screen flex items-center justify-center">
+        <div className=" w-full h-screen flex items-center justify-center">
           {/* Left section — hidden on small screens */}
-          <div className="hidden md:flex h-screen bg-blue-600 flex-1 items-center justify-center">
+          <div className="hidden md:flex h-screen bg-gray-200 flex-1 items-center justify-center">
             <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
           </div>
 
           {/* Center section — always visible */}
-          <div className="h-screen bg-red-400 flex flex-2 items-center justify-center">
+          <div className="h-screen bg-gray-200 flex flex-2 items-center justify-center">
             <div className="h-[95%] w-[90%] bg-fuchsia-300 border rounded"></div>
           </div>
 
           {/* Right section — hidden on small screens */}
-          <div className="hidden md:flex h-screen bg-yellow-400 flex-1 items-center justify-center">
+          <div className="hidden md:flex h-screen bg-gray-200 flex-1 items-center justify-center">
             <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
           </div>
         </div>

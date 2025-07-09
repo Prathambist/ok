@@ -9,7 +9,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
 
   return (
     <div>
-      <h3 className="text-white text-2xl font-semibold mb-4 flex items-center">
+      <h3 className="text-black text-2xl font-semibold mb-4 flex items-center">
         {type === 'fruit'
           ? '🍓 Fruits'
           : type === 'vegetable'
@@ -33,7 +33,7 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
             <Link
               to={`/product/${item.name}`}
               key={index}
-              className="relative bg-white rounded-lg shadow-lg overflow-hidden border-4 border-purple-500 transform hover:scale-105 transition-all duration-300"
+              className="relative bg-white rounded-lg shadow-lg overflow-hidden border-4 border-gray-300 transform hover:scale-105 transition-all duration-300"
             >
               {/* Optional badge for type */}
               <div className="absolute top-2 left-2 bg-yellow-300 text-yellow-900 px-2 py-1 rounded text-xs font-semibold z-10 shadow">

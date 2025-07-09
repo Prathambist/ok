@@ -46,7 +46,7 @@ function ProductDetail() {
   if (!product) return <div className="text-white p-6">Product not found.</div>;
 
   return (
-    <div className="min-h-screen bg-purple-700 flex items-center justify-center p-6">
+    <div className="min-h-screen flex items-center justify-center p-6">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center">
         <img
           src={`/src/assets/${product.imageKey}.jpg`}

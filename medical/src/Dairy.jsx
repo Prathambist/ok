@@ -24,7 +24,7 @@ function Dairy() {
   }, []);
 
   return (
-    <div className="bg-blue-600 min-h-screen p-8">
+    <div className="bg-white-600 min-h-screen p-8">
       <h2 className="text-white text-4xl font-bold mb-6 text-center">🥛 Dairy Products</h2>
       {loading ? (
         <div className="text-white text-xl text-center">Loading dairy products...</div>

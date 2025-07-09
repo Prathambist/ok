@@ -19,8 +19,8 @@ function Fruits() {
   }, []);
 
   return (
-    <div className="bg-purple-700 min-h-screen p-6">
-      <h2 className="text-white text-3xl font-bold text-center mb-8">🍓 All Fruits</h2>
+    <div className="bg-yellow-100 min-h-screen p-6">
+      <h2 className="text-black text-3xl font-bold text-center mb-8">🍓 All Fruits</h2>
       <ProduceGrid items={produce} type="fruit" />
     </div>
   );
