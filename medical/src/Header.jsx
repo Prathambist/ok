@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 // Header Component with Search (reusable)
 function Header({ searchTerm, onSearchChange, onSearch }) {
@@ -32,9 +33,17 @@ function Header({ searchTerm, onSearchChange, onSearch }) {
             <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
             <a href="/about" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
             <div className="relative group">
-              <button className="text-gray-700 hover:text-blue-600 font-medium">
-                Categories
-              </button>
+               <NavDropdown title="Categories" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/fruits">Fruits</NavDropdown.Item>
+              <NavDropdown.Item href="/vegetables">
+                Vegetable
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Dry Fruits</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
               <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Fruits</a>
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vegetables</a>
@@ -42,7 +51,7 @@ function Header({ searchTerm, onSearchChange, onSearch }) {
               </div>
             </div>
           </div>
-
+          
           {/* Search Bar */}
           <div className="flex-1 max-w-md mx-4">
             <form onSubmit={handleSearchSubmit} className="relative">

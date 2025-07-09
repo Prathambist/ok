@@ -9,13 +9,12 @@ import Fruits from './Fruits';
 import Vegetables from './Vegetables';
 import ProductDetail from './ProductDetail';
 import Search from './Search';
+import Dryfruits from './Dryfruits';
 function MyRouter() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="signup" element={<Sign />} />
           
-          <Route path="New_account" element={<New_account/>} />
           
             <Route path="/" element={<Layout/>} >
               <Route index element={<Home/>} />
@@ -23,8 +22,11 @@ function MyRouter() {
               <Route path="search" element={<Search/>} />
               <Route path="/fruits" element={<Fruits />} />
               <Route path="/vegetables" element={<Vegetables />} />
+              <Route path="/dryfruits" element={<Dryfruits />} />
               <Route path="/product/:name" element={<ProductDetail />} />
-              
+              <Route path="signup" element={<Sign />} />
+          
+          <Route path="New_account" element={<New_account/>} />
               
            </Route>
         </Routes>
