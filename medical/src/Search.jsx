@@ -91,8 +91,8 @@ function Search() {
           </div>
         </div>
 
-        <div className="bg-blue-500 w-full min-h-screen flex items-center justify-center py-8">
-          <div className="w-[98%] bg-purple-700 rounded p-6 overflow-auto">
+        <div className="w-full min-h-screen flex items-center justify-center py-8">
+          <div className="w-[98%] bg-gray-200 rounded p-6 overflow-auto">
             <h2 className="text-white text-3xl font-bold text-center mb-6">
               🔍 Search Results
             </h2>
@@ -150,7 +150,7 @@ function Search() {
 function ProductGridSection({ items, title }) {
   return (
     <div>
-      <h3 className="text-white text-2xl font-semibold mb-4 flex items-center">
+      <h3 className="text-black text-2xl font-semibold mb-4 flex items-center">
         {title}
         <span className="ml-2 text-sm bg-green-500 px-2 py-1 rounded-full">
           {items.length} items

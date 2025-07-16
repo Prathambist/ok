@@ -103,16 +103,15 @@ function Home() {
       description: "We present you a variety of fresh produce",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=60",
-      title: "Nature View",
-      description: "Stunning natural landscape",
+      image:"/veg.png",
+      title: "Fresh Vegetables",
+      description: "Direct from the farm to your table",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=60",
-      title: "Scenic Beauty",
-      description: "Breathtaking outdoor view",
+        "/fruit.jpg",
+      title: "Fresh Fruits",
+      description: "The Best Ones for Your Health",
     },
   ];
 
@@ -226,14 +225,12 @@ function Home() {
                     <p className="text-lg opacity-90 leading-relaxed">
                       {slide.description}
                     </p>
-                    <button className="mt-6 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors duration-200">
-                      <a
-                        href="#Trend"
-                        className="text-white no-underline hover:text-green-200 transition"
-                      >
-                        Shop Now
-                      </a>
-                    </button>
+                    <a
+                   href="#Trend"
+                  className="mt-6 inline-block px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition no-underline hover:text-green-200">
+
+                  Shop Now
+                    </a>
                   </div>
                 </div>
               </div>
@@ -295,7 +292,7 @@ function Home() {
         {/* ────── Sidebar / placeholder layout (optional) ────── */}
         <div className="w-full h-screen flex items-center justify-center">
           {/* Left sidebar */}
-          <div className="hidden md:flex h-screen flex-1 items-center justify-center">
+          <div className="hidden md:flex h-screen flex-0.5 items-center justify-center">
             <div className="h-[90%] w-[90%] bg-gray-200 p-[50px] border rounded flex flex-col space-y-4">
               <span className="text-lg font-semibold">Categories</span>
               <a
@@ -332,7 +329,10 @@ function Home() {
 
           {/* Right placeholder */}
           <div className="hidden md:flex h-screen flex-1 items-center justify-center">
-            <div className="h-[90%] w-[90%] bg-gray-200 border rounded"></div>
+            <div className="h-[90%] w-[90%] bg-gray-200 border rounded p-[50px]">
+                          Space for Ads
+
+            </div>
           </div>
         </div>
 
