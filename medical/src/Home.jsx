@@ -7,14 +7,14 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
     <div>
       <h3 className="text-black text-2xl font-semibold mb-4 flex items-center">
         {type === 'fruit'
-    ? '🍓 Fruits'
-    : type === 'vegetable'
-    ? '🥕 Vegetables'
-    : type === 'dryfruit'
-    ? '🌰 Dry Fruits'
-    : type === 'dairy'
-    ? '🥛 Dairy'
-    : 'Produce'}
+          ? '🍓 Fruits'
+          : type === 'vegetable'
+          ? '🥕 Vegetables'
+          : type === 'dryfruit'
+          ? '🌰 Dry Fruits'
+          : type === 'dairy'
+          ? '🥛 Dairy'
+          : 'Produce'}
         <span className="ml-2 text-sm bg-green-500 px-2 py-1 rounded-full">
           {items.length} items
         </span>
@@ -27,14 +27,14 @@ function ProduceGrid({ items, type, limit, showViewMore }) {
           >
             <div className="absolute top-2 left-2 bg-yellow-300 text-yellow-900 px-2 py-1 rounded text-xs font-semibold z-10 shadow">
               {item.type === 'fruit'
-    ? 'Fruit'
-    : item.type === 'vegetable'
-    ? 'Vegetable'
-    : item.type === 'dryfruit'
-    ? 'Dry Fruit'
-    : item.type === 'dairy'
-    ? 'Dairy'
-    : ''}
+                ? 'Fruit'
+                : item.type === 'vegetable'
+                ? 'Vegetable'
+                : item.type === 'dryfruit'
+                ? 'Dry Fruit'
+                : item.type === 'dairy'
+                ? 'Dairy'
+                : ''}
             </div>
             <Link to={`/product/${encodeURIComponent(item.name)}`}>
               <div className="h-52 w-full overflow-hidden bg-pink-100 cursor-pointer">
@@ -126,14 +126,11 @@ function Home() {
         { name: 'Pistachios', imageKey: 'pistachios', type: 'dryfruit', price: 380 },
         { name: 'Dates', imageKey: 'dates', type: 'dryfruit', price: 220 },
         { name: 'Figs', imageKey: 'figs', type: 'dryfruit', price: 260 },
-        // inside the useEffect that sets data (in Home component)
         { name: 'Milk', imageKey: 'milk', type: 'dairy', price: 90 },
         { name: 'Cheese', imageKey: 'cheese', type: 'dairy', price: 250 },
         { name: 'Yogurt', imageKey: 'yogurt', type: 'dairy', price: 110 },
         { name: 'Butter', imageKey: 'butter', type: 'dairy', price: 180 },
         { name: 'Paneer', imageKey: 'paneer', type: 'dairy', price: 220 }
-
-
       ];
       setProduce(data);
       setLoading(false);
@@ -146,7 +143,7 @@ function Home() {
   const dairy = produce.filter((item) => item.type === 'dairy');
 
   return (
-    <div>
+    <div className="scroll-smooth">
       <div className="flex flex-col items-center justify-center">
         {/* Image Slider */}
         <div className="relative w-[99.99%] h-[500px] overflow-hidden">
@@ -199,41 +196,62 @@ function Home() {
           </button>
         </div>
 
-        {/* Fruits & Vegetables Display Section */}
-        <div className="bg-gray-200 w-full min-h-screen flex items-center justify-center py-8">
-          <div className="w-[98%] bg-gray-300 rounded p-6 overflow-auto">
-            <h2 className="text-black text-3xl font-bold text-center mb-6"> Currently Trending </h2>
+        {/* Your original sections */}
+        <div className="w-full h-screen flex items-center justify-center">
+          {/* Left section — navigation */}
+          <div className="hidden md:flex h-screen flex-1 items-center justify-center">
+            <div className="h-[90%] w-[90%] bg-gray-200 p-[50px] border rounded flex flex-col space-y-4">
+              <span className="text-lg font-semibold">Categories</span>
+              <a href="#fruits-section" className="text-black underline hover:text-green-300 transition">
+                Fruits
+              </a>
+              <a href="#vegetables-section" className="text-black underline hover:text-green-300 transition">
+                Vegetables
+              </a>
+              <a href="#dryfruits-section" className="text-black underline hover:text-green-300 transition">
+                Dry Fruits
+              </a>
+              <a href="#dairy-section" className="text-black underline hover:text-green-300 transition">
+                Dairy
+              </a>
+            </div>
+          </div>
+
+          {/* Center section */}
+          <div className="h-screen flex flex-2 items-center justify-center">
+            <div className="h-[95%] w-[90%] bg-gray-200 border rounded"></div>
+          </div>
+
+          {/* Right section */}
+          <div className="hidden md:flex h-screen flex-1 items-center justify-center">
+            <div className="h-[90%] w-[90%] bg-gray-200 border rounded"></div>
+          </div>
+        </div>
+        
+        {/* Products Display Section */}
+        <div className="w-full min-h-screen flex items-center justify-center py-8">
+          <div className="w-[98%] bg-gray-200 rounded p-6 overflow-auto">
+            <h2 className="text-black text-3xl font-bold text-center mb-6">Currently Trending</h2>
             {loading ? (
               <div className="flex justify-center items-center h-64">
                 <div className="text-black text-xl">Loading products...</div>
               </div>
             ) : (
               <div className="space-y-8">
-                <ProduceGrid items={fruits} type="fruit" limit={5} showViewMore={true} />
-                <ProduceGrid items={vegetables} type="vegetable" limit={5} showViewMore={true} />
-                <ProduceGrid items={dryfruits} type="dryfruit" limit={5} showViewMore={true} />
-                <ProduceGrid items={dairy} type="dairy" limit={5} showViewMore={true} />
-
+                <div id="fruits-section">
+                  <ProduceGrid items={fruits} type="fruit" limit={5} showViewMore={true} />
+                </div>
+                <div id="vegetables-section">
+                  <ProduceGrid items={vegetables} type="vegetable" limit={5} showViewMore={true} />
+                </div>
+                <div id="dryfruits-section">
+                  <ProduceGrid items={dryfruits} type="dryfruit" limit={5} showViewMore={true} />
+                </div>
+                <div id="dairy-section">
+                  <ProduceGrid items={dairy} type="dairy" limit={5} showViewMore={true} />
+                </div>
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Your original sections */}
-        <div className=" w-full h-screen flex items-center justify-center">
-          {/* Left section — hidden on small screens */}
-          <div className="hidden md:flex h-screen bg-gray-200 flex-1 items-center justify-center">
-            <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
-          </div>
-
-          {/* Center section — always visible */}
-          <div className="h-screen bg-gray-200 flex flex-2 items-center justify-center">
-            <div className="h-[95%] w-[90%] bg-fuchsia-300 border rounded"></div>
-          </div>
-
-          {/* Right section — hidden on small screens */}
-          <div className="hidden md:flex h-screen bg-gray-200 flex-1 items-center justify-center">
-            <div className="h-[90%] w-[90%] bg-fuchsia-300 border rounded"></div>
           </div>
         </div>
       </div>
