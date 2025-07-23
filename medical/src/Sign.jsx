@@ -3,29 +3,48 @@ import React, { useState } from 'react';
 function Sign() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  function check(e) {
+  async function check(e) {
     e.preventDefault();
 
-    // Hide error messages by default
-    document.getElementById("Syntax_email").classList.add("hidden");
-    document.getElementById("Syntax_password").classList.add("hidden");
+    // Clear previous error
+    setErrorMsg('');
 
-    let hasError = false;
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-    if (email.trim() === "") {
-      document.getElementById("Syntax_email").classList.remove("hidden");
-      hasError = true;
+    // Validation
+    if (email.trim() === '' || password.trim() === '') {
+      setErrorMsg('Email and password are required.');
+      return;
     }
 
-    if (password.trim() === "") {
-      document.getElementById("Syntax_password").classList.remove("hidden");
-      hasError = true;
-    }
+    try {
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('action', 'login'); // So backend knows it's a login request
 
-    if (!hasError) {
-      // Do your form submission or validation logic here
-      alert("Form submitted successfully!");
+      const response = await fetch('http://localhost/ok-main/medical/src/php/backend.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.text();
+      console.log('Server Response:', result);
+
+      if (result.toLowerCase().includes('success')) {
+        alert('Login successful!');
+        // Optionally redirect:
+        // window.location.href = "/dashboard";
+      } else {
+        setErrorMsg(result); // Display error from backend
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMsg('Something went wrong. Please try again.');
     }
   }
 
@@ -44,10 +63,8 @@ function Sign() {
                 className="w-full p-2 border border-gray-300 rounded"
                 placeholder="Enter your email"
               />
-              <p id="Syntax_email" className="text-red-400 text-xs hidden">
-                Invalid, try again
-              </p>
             </div>
+
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Password</label>
               <input
@@ -57,10 +74,11 @@ function Sign() {
                 className="w-full p-2 border border-gray-300 rounded"
                 placeholder="Enter your password"
               />
-              <p id="Syntax_password" className="text-red-400 text-xs hidden">
-                Incorrect password
-              </p>
             </div>
+
+            {errorMsg && (
+              <p className="text-red-500 text-sm mb-4">{errorMsg}</p>
+            )}
 
             <button
               type="submit"
@@ -68,6 +86,7 @@ function Sign() {
             >
               Sign In
             </button>
+
             <div className="mt-4 text-sm text-gray-600">
               Don't have an account?{' '}
               <a href="New_account" className="text-blue-500 hover:underline">

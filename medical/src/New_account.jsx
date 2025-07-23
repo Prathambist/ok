@@ -6,42 +6,114 @@ function New_account() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  function check1(e) {
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const validateEmail = (email) => {
+    // Simple email regex
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validateName = (name) => {
+    // Only alphabets and spaces allowed
+    const re = /^[A-Za-z\s]+$/;
+    return re.test(name);
+  };
+
+  const validatePassword = (password) => {
+    // Minimum 8 characters, at least one uppercase letter, one lowercase letter and one number
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+    return re.test(password);
+  };
+
+  async function check1(e) {
     e.preventDefault();
 
-    // Hide all error messages
-    document.getElementById("err_name").classList.add("hidden");
-    document.getElementById("err_email").classList.add("hidden");
-    document.getElementById("err_password").classList.add("hidden");
-    document.getElementById("err_confirm").classList.add("hidden");
+    let newErrors = {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    };
 
     let hasError = false;
 
-    if (name.trim() === "") {
-      document.getElementById("err_name").classList.remove("hidden");
+    if (name.trim() === '') {
+      newErrors.name = 'Name is required';
       hasError = true;
-    }
-    if (email.trim() === "") {
-      document.getElementById("err_email").classList.remove("hidden");
-      hasError = true;
-    }
-    if (password.trim() === "") {
-      document.getElementById("err_password").classList.remove("hidden");
-      hasError = true;
-    }
-    if (confirmPassword.trim() === "") {
-      document.getElementById("err_confirm").innerText = "Please confirm your password";
-      document.getElementById("err_confirm").classList.remove("hidden");
-      hasError = true;
-    } else if (confirmPassword !== password) {
-      document.getElementById("err_confirm").innerText = "Passwords do not match";
-      document.getElementById("err_confirm").classList.remove("hidden");
+    } else if (!validateName(name.trim())) {
+      newErrors.name = 'Name must contain only alphabets and spaces';
       hasError = true;
     }
 
-    if (!hasError) {
-      alert("Account created successfully!"); // Optional success message
-      // You can clear inputs or redirect here
+    if (email.trim() === '') {
+      newErrors.email = 'Email is required';
+      hasError = true;
+    } else if (!validateEmail(email.trim())) {
+      newErrors.email = 'Invalid email format';
+      hasError = true;
+    }
+
+    if (password.trim() === '') {
+      newErrors.password = 'Password is required';
+      hasError = true;
+    } else if (!validatePassword(password.trim())) {
+      newErrors.password = 'Password must be at least 8 characters with uppercase, lowercase, and number';
+      hasError = true;
+    }
+
+    if (confirmPassword.trim() === '') {
+      newErrors.confirmPassword = 'Please confirm your password';
+      hasError = true;
+    } else if (confirmPassword !== password) {
+      newErrors.confirmPassword = 'Passwords do not match';
+      hasError = true;
+    }
+
+    setErrors(newErrors);
+
+    if (hasError) return;
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+
+    try {
+      const response = await fetch('http://localhost/ok-main/medical/src/php/backend.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.statusText}`);
+      }
+
+      const data = await response.text();
+      console.log('Server Response:', data);
+      alert(data);
+
+      if (data.toLowerCase().includes('success')) {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setErrors({
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        });
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong! Please try again.');
     }
   }
 
@@ -60,7 +132,9 @@ function New_account() {
                 className="w-full p-2 border border-gray-300 rounded"
                 placeholder="Enter your full name"
               />
-              <p id="err_name" className="text-red-400 text-xs hidden">Name is required</p>
+              {errors.name && (
+                <p className="text-red-400 text-xs">{errors.name}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Email</label>
@@ -71,7 +145,9 @@ function New_account() {
                 className="w-full p-2 border border-gray-300 rounded"
                 placeholder="Enter your email"
               />
-              <p id="err_email" className="text-red-400 text-xs hidden">Email is required</p>
+              {errors.email && (
+                <p className="text-red-400 text-xs">{errors.email}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Password</label>
@@ -82,7 +158,9 @@ function New_account() {
                 className="w-full p-2 border border-gray-300 rounded"
                 placeholder="Enter your password"
               />
-              <p id="err_password" className="text-red-400 text-xs hidden">Password is required</p>
+              {errors.password && (
+                <p className="text-red-400 text-xs">{errors.password}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Confirm Password</label>
@@ -93,7 +171,9 @@ function New_account() {
                 className="w-full p-2 border border-gray-300 rounded"
                 placeholder="Re-enter your password"
               />
-              <p id="err_confirm" className="text-red-400 text-xs hidden">Confirm your password</p>
+              {errors.confirmPassword && (
+                <p className="text-red-400 text-xs">{errors.confirmPassword}</p>
+              )}
             </div>
             <button
               type="submit"

@@ -384,6 +384,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <div className="w-full h-[600px] ">f</div>
     </div>
   );
 }
